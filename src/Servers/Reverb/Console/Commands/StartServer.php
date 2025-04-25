@@ -92,7 +92,7 @@ class StartServer extends Command implements SignalableCommandInterface
     protected function ensureStaleConnectionsAreCleaned(LoopInterface $loop): void
     {
        
-        $loop->addPeriodicTimer(  $this->laravel['config']['reverb.servers.reverb']['periodic_timer']??60, function () {
+        $loop->addPeriodicTimer($this->laravel['config']['reverb.servers.reverb']['periodic_timer']??60, function () {
             PruneStaleConnections::dispatch();
             PingInactiveConnections::dispatch();
         });
